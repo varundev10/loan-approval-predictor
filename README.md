@@ -1,6 +1,6 @@
 # Loan Approval Predictor
 
-This project predicts whether a loan application will be approved or rejected using the Kaggle loan approval dataset by Archit Sharma. It includes data analysis notebooks, trained model artifacts, and a Flask web app ready for deployment on Render.
+This project predicts whether a loan application will be approved or rejected using the synthetic loan approval dataset by Archit Sharma. It includes data analysis notebooks, trained model artifacts, and a Flask web app ready for deployment on Render.
 
 ## Features
 
@@ -16,7 +16,7 @@ Final deployed model uses:
 
 - `Dataset/LoanApprovalSynthetic/loan_approval_dataset.csv`
 
-This is the Kaggle dataset from:
+This dataset source is:
 
 - `architsharma01/loan-approval-prediction-dataset`
 
@@ -50,10 +50,10 @@ Best model:
 
 Latest evaluation:
 
-- Accuracy: `0.9813`
-- Precision: `0.9831`
-- Recall: `0.9868`
-- F1 Score: `0.9850`
+- Accuracy: `0.9848`
+- Precision: `0.9796`
+- Recall: `0.9962`
+- F1 Score: `0.9879`
 
 ## Project Structure
 
@@ -102,6 +102,12 @@ python application.py
 http://127.0.0.1:5000
 ```
 
+5. To regenerate the deployment artifacts from the same synthetic dataset:
+
+```bash
+python train_synthetic_artifacts.py
+```
+
 ## Deployment
 
 This repo is prepared for Render.
@@ -109,10 +115,12 @@ This repo is prepared for Render.
 Important files:
 
 - `render.yaml`
+- `.python-version`
 - `application.py`
 - `requirements.txt`
 - `artifacts/model.pkl`
 - `artifacts/preprocessor.pkl`
+- `train_synthetic_artifacts.py`
 
 ### Render Steps
 
@@ -140,5 +148,6 @@ gunicorn --bind 0.0.0.0:$PORT application:app
 ## Notes
 
 - The notebooks include both the synthetic dataset analysis and the earlier Kaggle train/test style dataset analysis.
-- The deployed app currently uses the Archit Sharma loan approval dataset schema.
+- The deployed app currently uses the synthetic dataset schema from `Dataset/LoanApprovalSynthetic/loan_approval_dataset.csv`.
 - The form placeholders and help text are based on the observed dataset ranges.
+- The deployment runtime should match the model-training runtime to avoid pickle compatibility issues.
