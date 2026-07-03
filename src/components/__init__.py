@@ -1,1 +1,1 @@
-"""Pipeline component package."""
+"""Components package."""

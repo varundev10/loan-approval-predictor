@@ -1,1 +1,1 @@
-"""Prediction and training pipeline package."""
+"""Prediction pipeline."""

@@ -1,1 +1,1 @@
-"""Loan approval deployment package."""
+"""Loan approval app."""
