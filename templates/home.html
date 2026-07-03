@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Approval Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <main class="page">
+        <section class="card">
+            <h1>Loan Approval Predictor</h1>
+            <p class="subtitle">Deployment-ready Flask structure for the selected Kaggle loan dataset.</p>
+
+            <form action="{{ url_for('predict_data') }}" method="post" class="grid">
+                <label>Gender
+                    <select name="gender">
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                </label>
+                <label>Married
+                    <select name="married">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                </label>
+                <label>Dependents
+                    <select name="dependents">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3+</option>
+                    </select>
+                </label>
+                <label>Education
+                    <select name="education">
+                        <option>Graduate</option>
+                        <option>Not Graduate</option>
+                    </select>
+                </label>
+                <label>Self Employed
+                    <select name="self_employed">
+                        <option>No</option>
+                        <option>Yes</option>
+                    </select>
+                </label>
+                <label>Applicant Income
+                    <input type="number" name="applicant_income" step="any" required>
+                </label>
+                <label>Coapplicant Income
+                    <input type="number" name="coapplicant_income" step="any" required>
+                </label>
+                <label>Loan Amount
+                    <input type="number" name="loan_amount" step="any" required>
+                </label>
+                <label>Loan Amount Term
+                    <input type="number" name="loan_amount_term" step="any" value="360" required>
+                </label>
+                <label>Credit History
+                    <select name="credit_history">
+                        <option value="1">1</option>
+                        <option value="0">0</option>
+                    </select>
+                </label>
+                <label>Property Area
+                    <select name="property_area">
+                        <option>Semiurban</option>
+                        <option>Urban</option>
+                        <option>Rural</option>
+                    </select>
+                </label>
+                <button type="submit">Predict</button>
+            </form>
+
+            {% if results %}
+            <div class="result success">Prediction: {{ results }}</div>
+            {% endif %}
+
+            {% if error %}
+            <div class="result error">{{ error }}</div>
+            {% endif %}
+        </section>
+    </main>
+</body>
+</html>
