@@ -19,17 +19,17 @@ def predict_data():
 
     try:
         data = CustomData(
-            gender=request.form.get("gender", "Male"),
-            married=request.form.get("married", "Yes"),
-            dependents=request.form.get("dependents", "0"),
+            no_of_dependents=int(request.form.get("no_of_dependents", 0)),
             education=request.form.get("education", "Graduate"),
             self_employed=request.form.get("self_employed", "No"),
-            applicant_income=float(request.form.get("applicant_income", 0)),
-            coapplicant_income=float(request.form.get("coapplicant_income", 0)),
+            income_annum=float(request.form.get("income_annum", 0)),
             loan_amount=float(request.form.get("loan_amount", 0)),
-            loan_amount_term=float(request.form.get("loan_amount_term", 360)),
-            credit_history=float(request.form.get("credit_history", 1)),
-            property_area=request.form.get("property_area", "Semiurban"),
+            loan_term=float(request.form.get("loan_term", 0)),
+            cibil_score=float(request.form.get("cibil_score", 0)),
+            residential_assets_value=float(request.form.get("residential_assets_value", 0)),
+            commercial_assets_value=float(request.form.get("commercial_assets_value", 0)),
+            luxury_assets_value=float(request.form.get("luxury_assets_value", 0)),
+            bank_asset_value=float(request.form.get("bank_asset_value", 0)),
         )
 
         pred_df = data.get_data_as_data_frame()

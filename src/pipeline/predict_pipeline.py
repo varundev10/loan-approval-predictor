@@ -18,12 +18,12 @@ class PredictPipeline:
     def predict(self, features: pd.DataFrame):
         if not MODEL_PATH.exists():
             raise CustomException(
-                "Missing deployment artifact: artifacts/model.pkl. Train and save the final Kaggle loan model first."
+                "Missing deployment artifact: artifacts/model.pkl."
             )
 
         if not PREPROCESSOR_PATH.exists():
             raise CustomException(
-                "Missing deployment artifact: artifacts/preprocessor.pkl. Save the preprocessing pipeline before deployment."
+                "Missing deployment artifact: artifacts/preprocessor.pkl."
             )
 
         model = load_object(MODEL_PATH)
@@ -35,33 +35,33 @@ class PredictPipeline:
 
 @dataclass
 class CustomData:
-    gender: str
-    married: str
-    dependents: str
+    no_of_dependents: int
     education: str
     self_employed: str
-    applicant_income: float
-    coapplicant_income: float
+    income_annum: float
     loan_amount: float
-    loan_amount_term: float
-    credit_history: float
-    property_area: str
+    loan_term: float
+    cibil_score: float
+    residential_assets_value: float
+    commercial_assets_value: float
+    luxury_assets_value: float
+    bank_asset_value: float
 
     def get_data_as_data_frame(self) -> pd.DataFrame:
         return pd.DataFrame(
             [
                 {
-                    "Gender": self.gender,
-                    "Married": self.married,
-                    "Dependents": self.dependents,
-                    "Education": self.education,
-                    "Self_Employed": self.self_employed,
-                    "ApplicantIncome": self.applicant_income,
-                    "CoapplicantIncome": self.coapplicant_income,
-                    "LoanAmount": self.loan_amount,
-                    "Loan_Amount_Term": self.loan_amount_term,
-                    "Credit_History": self.credit_history,
-                    "Property_Area": self.property_area,
+                    "no_of_dependents": self.no_of_dependents,
+                    "education": self.education,
+                    "self_employed": self.self_employed,
+                    "income_annum": self.income_annum,
+                    "loan_amount": self.loan_amount,
+                    "loan_term": self.loan_term,
+                    "cibil_score": self.cibil_score,
+                    "residential_assets_value": self.residential_assets_value,
+                    "commercial_assets_value": self.commercial_assets_value,
+                    "luxury_assets_value": self.luxury_assets_value,
+                    "bank_asset_value": self.bank_asset_value,
                 }
             ]
         )

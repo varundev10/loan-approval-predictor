@@ -13,24 +13,14 @@
             <p class="subtitle">Enter the applicant details below to predict loan approval.</p>
 
             <form action="{{ url_for('predict_data') }}" method="post" class="grid">
-                <label>Gender
-                    <select name="gender">
-                        <option>Male</option>
-                        <option>Female</option>
-                    </select>
-                </label>
-                <label>Married
-                    <select name="married">
-                        <option>Yes</option>
-                        <option>No</option>
-                    </select>
-                </label>
-                <label>Dependents
-                    <select name="dependents">
+                <label>Number of Dependents
+                    <select name="no_of_dependents">
                         <option>0</option>
                         <option>1</option>
                         <option>2</option>
-                        <option>3+</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
                     </select>
                 </label>
                 <label>Education
@@ -45,30 +35,29 @@
                         <option>Yes</option>
                     </select>
                 </label>
-                <label>Applicant Income
-                    <input type="number" name="applicant_income" step="any" required>
-                </label>
-                <label>Coapplicant Income
-                    <input type="number" name="coapplicant_income" step="any" required>
+                <label>Annual Income
+                    <input type="number" name="income_annum" step="any" required>
                 </label>
                 <label>Loan Amount
                     <input type="number" name="loan_amount" step="any" required>
                 </label>
-                <label>Loan Amount Term
-                    <input type="number" name="loan_amount_term" step="any" value="360" required>
+                <label>Loan Term
+                    <input type="number" name="loan_term" step="any" required>
                 </label>
-                <label>Credit History
-                    <select name="credit_history">
-                        <option value="1">1</option>
-                        <option value="0">0</option>
-                    </select>
+                <label>CIBIL Score
+                    <input type="number" name="cibil_score" step="any" required>
                 </label>
-                <label>Property Area
-                    <select name="property_area">
-                        <option>Semiurban</option>
-                        <option>Urban</option>
-                        <option>Rural</option>
-                    </select>
+                <label>Residential Assets Value
+                    <input type="number" name="residential_assets_value" step="any" required>
+                </label>
+                <label>Commercial Assets Value
+                    <input type="number" name="commercial_assets_value" step="any" required>
+                </label>
+                <label>Luxury Assets Value
+                    <input type="number" name="luxury_assets_value" step="any" required>
+                </label>
+                <label>Bank Asset Value
+                    <input type="number" name="bank_asset_value" step="any" required>
                 </label>
                 <button type="submit">Predict</button>
             </form>
